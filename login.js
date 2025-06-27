@@ -22,6 +22,7 @@ firebase.auth().getRedirectResult().then((result) => {
 
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("loginBtn").addEventListener("click", () => {
+    console.log("ログインボタンがクリックされました");
     //  新しいタブでGoogleログイン
     auth.signInWithRedirect(provider);
   });
