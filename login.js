@@ -1,3 +1,6 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+
 // Firebaseの設定（あなたのプロジェクト情報に置き換えてください）
 const firebaseConfig = {
   apiKey: "AIzaSyDp4adzhjk2AKNPKPAG_pTee3e19vt_L9A",
