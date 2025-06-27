@@ -42,13 +42,14 @@ body {
     border: 2px solid white;
     color: white;
     padding: 18px 50px;
-    text-decoration: none;
     border-radius: 50px;
     font-weight: 500;
     font-size: 1.2rem;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
     animation: fadeInUp 1s ease 0.4s both;
+    cursor: pointer;
+    font-family: inherit;
 }
 
 .cta-button:hover {
