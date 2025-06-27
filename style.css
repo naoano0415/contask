@@ -36,7 +36,10 @@ body {
     animation: fadeInUp 1s ease 0.2s both;
 }
 
-.cta-button {
+.cta-button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
     display: inline-block;
     background: rgba(255, 255, 255, 0.2);
     border: 2px solid white;
@@ -52,7 +55,10 @@ body {
     font-family: inherit;
 }
 
-.cta-button:hover {
+.cta-button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
     background: white;
     color: #4a5bcc;
     transform: translateY(-3px);
@@ -79,7 +85,10 @@ body {
         font-size: 1.2rem;
     }
     
-    .cta-button {
+    .cta-button,
+    input[type="button"],
+    input[type="submit"],
+    input[type="reset"] {
         font-size: 1.1rem;
         padding: 15px 40px;
     }
