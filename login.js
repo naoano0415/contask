@@ -6,25 +6,23 @@ const firebaseConfig = {
   // 必要に応じて他の設定も
 };
 
-// Firebase初期化
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
-
-// Google認証プロバイダ
 const provider = new firebase.auth.GoogleAuthProvider();
 
-// ボタン押下でログイン開始
+// リダイレクトで戻ってきたときの結果を取得
+firebase.auth().getRedirectResult().then((result) => {
+  if (result.user) {
+    alert(`ログイン成功: ${result.user.displayName}`);
+    console.log(result.user);
+  }
+}).catch((error) => {
+  console.error("リダイレクトログイン失敗:", error);
+});
+
 document.addEventListener("DOMContentLoaded", () => {
-  const loginBtn = document.getElementById("loginBtn");
-  loginBtn.addEventListener("click", () => {
-    auth.signInWithPopup(provider)
-      .then((result) => {
-        alert(`ログイン成功: ${result.user.displayName}`);
-        console.log(result.user);
-      })
-      .catch((error) => {
-        alert(`ログイン失敗: ${error.message}`);
-        console.error(error);
-      });
+  document.getElementById("loginBtn").addEventListener("click", () => {
+    //  新しいタブでGoogleログイン
+    auth.signInWithRedirect(provider);
   });
 });
