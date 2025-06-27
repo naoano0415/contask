@@ -8,25 +8,28 @@ const firebaseConfig = {
   projectId: "contask-afb1d",
   // 必要に応じて他の設定も
 };
-
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const provider = new firebase.auth.GoogleAuthProvider();
-
-// リダイレクトで戻ってきたときの結果を取得
-firebase.auth().getRedirectResult().then((result) => {
-  if (result.user) {
-    alert(`ログイン成功: ${result.user.displayName}`);
-    console.log(result.user);
-  }
-}).catch((error) => {
-  console.error("リダイレクトログイン失敗:", error);
+// 登録ボタン
+document.getElementById("signupBtn").addEventListener("click", () => {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      alert("登録完了: " + userCredential.user.email);
+    })
+    .catch((error) => {
+      alert("登録エラー: " + error.message);
+    });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("loginBtn").addEventListener("click", () => {
-    console.log("ログインボタンがクリックされました");
-    //  新しいタブでGoogleログイン
-    auth.signInWithRedirect(provider);
-  });
+// ログインボタン
+document.getElementById("loginBtn").addEventListener("click", () => {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      alert("ログイン成功: " + userCredential.user.email);
+    })
+    .catch((error) => {
+      alert("ログインエラー: " + error.message);
+    });
 });
